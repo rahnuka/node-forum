@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/rahnuka/node-forum#readme",
   "dependencies": {
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "nodemon": "^2.0.20"
   }
 }
