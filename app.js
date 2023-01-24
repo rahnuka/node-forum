@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 app.use(express.json())
+const bcrypt=require("bcrypt.js");
+
+const cors= require("cors")
+app.use(cors());
 
 
 const mongoUrl=
@@ -23,15 +27,21 @@ const User=mongoose.model("UserInfo")
 
 app.post("/Signup", async (req, res) => {
     const { uname, email, password } = req.body;
+
+    const encryptedPassword=await bcrypt.hash(passowrd, 10);
     try {
+        const oldUser = User.findOne({ email });
+        if(oldUser){
+            res.send({ error: "User Exists" });
+        }
         await User.create({
             uname,
             email,
-            password,
+            password: encryptedPassword,
         });
-        res.send({status:"ok"})
+        res.send({status:"Data Sent"})
     } catch (error) {
-        res.send({status:"error"})
+        res.send({status:"Error, try again"})
     }
 });
 
@@ -44,3 +54,4 @@ app.listen(5000, () => {
 // user: rah
 // pass: rahnuka427
 //0.0.0.0/0
+//install express, nodemon, mongoose, cors, bcrypt
