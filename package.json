@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/rahnuka/node-forum/issues"
   },
-  "homepage": "https://github.com/rahnuka/node-forum#readme"
+  "homepage": "https://github.com/rahnuka/node-forum#readme",
+  "dependencies": {
+    "mongoose": "^6.8.4"
+  }
 }
